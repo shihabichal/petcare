@@ -17,7 +17,13 @@ $app = Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->reportable(function (\Throwable $e) {
+            if (isset($_ENV['IS_VERCEL'])) {
+                echo "<h1>🔥 ORIGINAL ERROR: " . $e->getMessage() . "</h1>";
+                echo "<pre>" . $e->getTraceAsString() . "</pre>";
+                exit;
+            }
+        });
     })->create();
 
 if (isset($_ENV['IS_VERCEL'])) {
