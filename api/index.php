@@ -2,6 +2,12 @@
 
 /**
  * Vercel Serverless Entrypoint for Laravel
+ */
+// Enable strict error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Fix Vercel read-only filesystem issues for bootstrap/cache
 $tmpCacheDir = '/tmp/storage/bootstrap/cache';
 if (!is_dir($tmpCacheDir)) {
