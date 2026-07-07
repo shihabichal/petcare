@@ -22,6 +22,7 @@
         }
     ],
     "env": {
+        "IS_VERCEL": "true",
         "APP_ENV": "production",
         "APP_DEBUG": "true",
         "CACHE_STORE": "array",
